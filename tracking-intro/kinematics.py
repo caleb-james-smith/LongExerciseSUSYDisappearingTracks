@@ -35,6 +35,8 @@ Minv_histogram = ROOT.TH1F("Minv", "Minv", 100, 0.0, 200.0)
 
 events.toBegin()                # start event loop from the beginning
 for i_event, event in enumerate(events):
+    # no break statement for testing, remove for final plots
+    #if i_event >= 100: break
     #event.getByLabel("generalTracks", tracks)
     event.getByLabel("globalMuons", tracks)
     sum_px = 0.0
@@ -70,8 +72,6 @@ for i_event, event in enumerate(events):
     pz_histogram.Fill(sum_pz)
     E_histogram.Fill(sum_E)
     KE_histogram.Fill(sum_KE)
-    # no break statement for testing, remove for final plots
-    #if i_event >= 100: break
 
 c = ROOT.TCanvas ("c" , "c", 800, 800)
 px_histogram.Draw()
